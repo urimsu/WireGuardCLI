@@ -1,5 +1,6 @@
 use crate::check_active;
 use colored::Colorize;
+use dialoguer::{theme::ColorfulTheme, Select};
 
 fn vpn_status() {
     let is_connected_string = "VPN verbunden: ";
@@ -9,12 +10,23 @@ fn vpn_status() {
         Err(e) => println!("ERROR executing wg: {} ", e),
     }
 }
+
 pub fn interaction() {
+    let options = vec![
+        "1. Establish a Connection".to_string(),
+        "2. Make a  new Connection Config".to_string(),
+        "3. Show Config".to_string(),
+        "0. Exit".to_string(),
+    ];
+
     println!("--------WireGuardCLI--------");
 
     vpn_status();
-    println!("1. Establish a Connection");
-    println!("2. Make a new Connection Config");
-    println!("3. Show Config");
-    println!("0. Exit");
+
+    let selection = Select::with_theme(&ColorfulTheme::default())
+        .with_prompt("Waehle eine Option")
+        .items(&options) // <-- hier 'items', nicht 'item'
+        .default(0)
+        .interact()
+        .unwrap();
 }

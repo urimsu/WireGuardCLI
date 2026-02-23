@@ -6,3 +6,4 @@ edition = "2024"
 [dependencies]
 syscalls = "0.8.1"
 colored = "2.0"
+dialoguer="0.10"
