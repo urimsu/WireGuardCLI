@@ -45,14 +45,19 @@ fn select_menu() -> MenuOption {
 }
 
 pub fn interaction() {
-    println!("\n--------WireGuardCLI--------\n");
+    loop {
+        println!("\n--------WireGuardCLI--------\n");
 
-    vpn_status();
-    let selected_menu = select_menu();
-    match selected_menu {
-        MenuOption::CONNECT => connectVPN::set_connection(),
-        MenuOption::NEWCONFIG => println!("write_new_config()"),
-        MenuOption::SHOWCONFIG => println!("show_current_config()"),
-        MenuOption::EXIT => exitWireGuardCli::exit_wire_guard_cli(),
+        vpn_status();
+        let selected_menu = select_menu();
+        match selected_menu {
+            MenuOption::CONNECT => connectVPN::set_connection(),
+            MenuOption::NEWCONFIG => println!("write_new_config()"),
+            MenuOption::SHOWCONFIG => println!("show_current_config()"),
+            MenuOption::EXIT => {
+                exitWireGuardCli::exit_wire_guard_cli();
+                break;
+            }
+        }
     }
 }
