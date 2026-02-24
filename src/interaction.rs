@@ -36,10 +36,10 @@ fn select_menu() -> MenuOption {
         .unwrap();
 
     match selection {
-        0 => return MenuOption::CONNECT,
-        1 => return MenuOption::NEWCONFIG,
-        2 => return MenuOption::SHOWCONFIG,
-        3 => return MenuOption::EXIT,
+        0 => MenuOption::CONNECT,
+        1 => MenuOption::NEWCONFIG,
+        2 => MenuOption::SHOWCONFIG,
+        3 => MenuOption::EXIT,
         _ => unreachable!(),
     }
 }
