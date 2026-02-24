@@ -11,17 +11,13 @@ fn vpn_status() {
     }
 }
 
-pub fn interaction() {
+fn select_menu() -> String {
     let options = vec![
         "1. Establish a Connection".to_string(),
-        "2. Make a  new Connection Config".to_string(),
+        "2. Make a new Connection Config".to_string(),
         "3. Show Config".to_string(),
         "0. Exit".to_string(),
     ];
-
-    println!("--------WireGuardCLI--------");
-
-    vpn_status();
 
     let selection = Select::with_theme(&ColorfulTheme::default())
         .with_prompt("Waehle eine Option")
@@ -29,4 +25,16 @@ pub fn interaction() {
         .default(0)
         .interact()
         .unwrap();
+
+    return options[selection].clone();
+}
+
+pub fn interaction() {
+    println!("--------WireGuardCLI--------");
+
+    vpn_status();
+    let selected_menu = select_menu();
+    if selected_menu.contains("1. Establish a Connection") {
+        println!("1. AUSGEWAHLT")
+    }
 }
