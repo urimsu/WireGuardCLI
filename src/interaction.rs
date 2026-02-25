@@ -3,6 +3,7 @@ use crate::connectVPN;
 use crate::exitWireGuardCli;
 use colored::Colorize;
 use dialoguer::{theme::ColorfulTheme, Select};
+use std::process::Command;
 
 enum MenuOption {
     CONNECT,
@@ -46,6 +47,10 @@ fn select_menu() -> MenuOption {
 
 pub fn interaction() {
     loop {
+        Command::new("clear")
+            .status()
+            .expect("Failed to Execute 'Clear'");
+
         println!("\n--------WireGuardCLI--------\n");
 
         vpn_status();

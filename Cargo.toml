@@ -8,3 +8,4 @@ syscalls = "0.8.1"
 colored = "2.0"
 dialoguer="0.10"
 nix = { version = "0.28", features = ["user"] }
+console = "0.15"
